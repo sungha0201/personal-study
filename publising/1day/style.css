@@ -1,0 +1,103 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Kumbh Sans', sans-serif;
+  }
+  :root {
+    --Dark-cyan: #19a2ae;
+    --Very-dark-desaturated-blue: #2d3248;
+    --Dark-grayish-blue: #6a6f81;
+  }
+  html {
+    font-size: 62.5%;
+  }
+  body {
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 6.4rem;
+    background-image: url(images/bg-pattern-top.svg),url(images/bg-pattern-bottom.svg);
+    background-position: -19rem -37rem, 84rem 35rem;
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-color: var(--Dark-cyan);
+  }
+  .card {
+    background-color: #fff;
+    width: 34rem;
+    border-radius: 0.9rem;
+    overflow: hidden;
+    text-align: center;
+    box-shadow: 0 1.2rem 3.4rem 1.4rem rgba(16, 89, 96, 0.264);
+  }
+  header {
+    background-image: url(images/bg-pattern-card.svg);
+    position: relative;
+    height: 12rem;
+    margin-bottom: 6.4rem;
+  }
+  .header-avatar {
+    width: 8.4rem;
+    height: 8.4rem;
+    border: 4px solid white;
+    border-radius: 50%;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,20%);
+  }
+  .card h1 {
+    font-size: 1.8rem;
+    color: var(--Very-dark-desaturated-blue);
+    margin-bottom: 0.8rem;
+  }
+  .card h1 span {
+    color: var(--Dark-grayish-blue);
+    font-weight: normal;
+  }
+  .location {
+    font-size: 1.4rem;
+    color: var(--Dark-grayish-blue);
+    margin-bottom: 2.4rem;
+  }
+  .social-info {
+    padding: 2.4rem;
+    display: flex;
+    justify-content: center;
+    border-top: 1px solid #eee;
+  }
+  .details {
+    list-style: none;
+    display: flex;
+    align-items: center;
+    gap: 5.4rem;
+  }
+  .number {
+    font-size: 1.8rem;
+    color: var(--Very-dark-desaturated-blue);
+    font-weight: 700;
+    margin-bottom: 0.8rem;
+  }
+  .type {
+    font-size: 1.2rem;
+    color: var(--Dark-grayish-blue);
+  }
+  @media (max-width: 22em) {
+    html {
+      font-size: 52.25%;
+    }
+  }
+  
+  .attribution {
+    font-size: 1.4rem;
+    text-align: center;
+    color: black;
+  }
+  
+  .attribution a {
+    text-decoration: none;
+    color:#0d37f0;
+  }
