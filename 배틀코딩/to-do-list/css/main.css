@@ -1,0 +1,93 @@
+body {
+	/* font-family: 'Yeon Sung', cursive; */
+	font-family: Helvetica;
+	background-color: #fff4e1;
+}
+.hidden {
+	display: none;
+}
+
+h1 {
+	text-align: center;
+	margin-top: 50px;
+}
+main {
+	padding: 0 20px;
+}
+.contents {
+	background-color: #fec574;
+	border-radius: 20px;
+	padding: 25px 20px;
+}
+
+.todo-wrap .tit {
+	position: relative;
+	margin-bottom: 20px;
+	font-size: 40px;
+	font-weight: bold;
+}
+.todo-wrap .date {
+	display: inline-block;
+	color: #fff;
+	font-weight: bold;
+	margin-bottom: 15px;
+}
+.todo-wrap .todo-form {
+	margin-bottom: 20px;
+}
+.todo-wrap .todo-form input {
+	/* border: none; */
+	width: 100%;
+	padding: 5px 0;
+	border-radius: 5px;
+	text-align: center;
+}
+.todo-wrap .todo-form input::placeholder {
+	color: #bbb;
+}
+.todo-wrap .todo-list li {
+	padding: 20px 30px;
+	margin-bottom: 20px;
+	border-radius: 20px;
+	background-color: #fff;
+	display: flex;
+	align-items: center;
+}
+.todo-wrap .todo-list li span {
+	font-weight: bold;
+	vertical-align: middle;
+}
+.todo-wrap .todo-list li strong {
+	margin: 0 10px 0 15px;
+	background-color: transparent;
+}
+.todo-wrap .todo-list li button {
+	padding: 0;
+	border: none;
+	background-color: transparent;
+}
+.todo-wrap .todo-list i {
+	cursor: pointer;
+	display: inline-block;
+}
+.fix {
+	width: 30px;
+	margin-left: 5px;
+}
+.fas {
+	margin-left: 15px;
+}
+.fix::after {
+	font-size: 10px;
+	padding: 5px;
+	content: "수정";
+	display: inline-block;
+	line-height: 100%;
+	border: 1px solid #000;
+	box-sizing: border-box;
+}
+.edit-input {
+	position: absolute;
+	top: 0;
+	left: 0;
+}
