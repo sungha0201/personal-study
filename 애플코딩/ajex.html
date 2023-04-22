@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1" />
+		<title>Bootstrap demo</title>
+		<link
+			href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css"
+			rel="stylesheet"
+		/>
+	</head>
+	<body>
+		<div class="container">
+			<div class="row"></div>
+		</div>
+		<div class="container">
+			<button class="btn btn-danger" id="more">더보기</button>
+			<button class="btn btn-danger" id="sort">정렬</button>
+		</div>
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+		<script>
+			var products = [
+				{ id: 0, price: 70000, title: "Blossom Dress" },
+				{ id: 1, price: 50000, title: "Springfield Shirt" },
+				{ id: 2, price: 60000, title: "Black Monastery" },
+			];
+			const row = document.querySelector(".row");
+			const moreBtn = document.querySelector("#more");
+			const arrayBtn = document.querySelector("#sort");
+
+			products.forEach(function (a, i) {
+				makeCard(a);
+			});
+			let clickCount = 0;
+			moreBtn.addEventListener("click", function () {
+				clickCount++;
+				if (clickCount == 1) {
+					getFn("https://codingapple1.github.io/js/more1.json");
+				} else if (clickCount == 2) {
+					getFn("https://codingapple1.github.io/js/more2.json");
+				} else {
+					moreBtn.style.display = "none";
+				}
+			});
+
+			function makeCard(data) {
+				let template = row.insertAdjacentHTML(
+					"afterbegin",
+					`<div class="col-sm-4">
+            <img src="https://via.placeholder.com/600" class="w-100" />
+            <h5>${data.title}</h5>
+            <p>가격 : ${data.price}</p>
+          </div>`
+				);
+			}
+			function getFn(url) {
+				fetch(url)
+					.then((response) => response.json())
+					.then(function (data) {
+						data.forEach(function (a, i) {
+							makeCard(a);
+						});
+					});
+			}
+			/* 정렬
+			let array = [5, 6, 3, 1, 8];
+			let text = ["a", "b", "c"];
+			array.sort(function (a, b) {
+				//return값이 양수면 a를 오른쪽으로 음수면 b를 오른쪽으로
+				//return a - b; //오름차순 cf) b - a는 내림차순
+				//다나가 순 정렬
+				return a > b;
+			});
+ */
+			arrayBtn.addEventListener("click", function () {
+				products.sort(function (a, b) {
+					return a.price - b.price;
+				});
+				row.innerHTML = "";
+				products.forEach(function (a, i) {
+					makeCard(a);
+				});
+			});
+		</script>
+	</body>
+</html>
