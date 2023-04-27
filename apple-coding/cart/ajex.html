@@ -16,6 +16,7 @@
 		<div class="container">
 			<button class="btn btn-danger" id="more">더보기</button>
 			<button class="btn btn-danger" id="sort">정렬</button>
+			<button class="btn btn-danger" id="save">저장</button>
 		</div>
 
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -28,6 +29,7 @@
 			const row = document.querySelector(".row");
 			const moreBtn = document.querySelector("#more");
 			const arrayBtn = document.querySelector("#sort");
+			const saveBtn = document.querySelectorAll(".save");
 
 			products.forEach(function (a, i) {
 				makeCard(a);
@@ -45,14 +47,13 @@
 			});
 
 			function makeCard(data) {
-				let template = row.insertAdjacentHTML(
-					"afterbegin",
-					`<div class="col-sm-4">
-            <img src="https://via.placeholder.com/600" class="w-100" />
-            <h5>${data.title}</h5>
-            <p>가격 : ${data.price}</p>
-          </div>`
-				);
+				let template = `<div class="col-sm-4">
+						         <img src="https://via.placeholder.com/600" class="w-100" />
+						         <h5>${data.title}</h5>
+						         <p>가격 : ${data.price}</p>
+						         <button type="button" class="save">구매</button>
+						       </div>`;
+				$(".row").append(template);
 			}
 			function getFn(url) {
 				fetch(url)
@@ -63,24 +64,27 @@
 						});
 					});
 			}
-			/* 정렬
-			let array = [5, 6, 3, 1, 8];
-			let text = ["a", "b", "c"];
-			array.sort(function (a, b) {
-				//return값이 양수면 a를 오른쪽으로 음수면 b를 오른쪽으로
-				//return a - b; //오름차순 cf) b - a는 내림차순
-				//다나가 순 정렬
-				return a > b;
-			});
- */
+
 			arrayBtn.addEventListener("click", function () {
 				products.sort(function (a, b) {
 					return a.price - b.price;
 				});
+				console.log(products);
 				row.innerHTML = "";
 				products.forEach(function (a, i) {
 					makeCard(a);
 				});
+			});
+			$(".save").click(function (e) {
+				let title = $(e.target).siblings("h5").text();
+				// 로컬스토리지에 title을 저장하는데 아무것도 없으면 수정후 저장하기! 아니면 그냥 저장
+				if (localStorage.cart != null) {
+					let value = JSON.parse(localStorage.cart);
+					value.push(title);
+					localStorage.setItem("cart", JSON.stringify(value));
+				} else {
+					localStorage.setItem("cart", JSON.stringify([title]));
+				}
 			});
 		</script>
 	</body>

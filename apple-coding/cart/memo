@@ -1,0 +1,10 @@
+			정렬
+			let array = [5, 6, 3, 1, 8];
+			let text = ["a", "b", "c"];
+			array.sort(function (a, b) {
+				//return값이 양수면 a를 오른쪽으로 음수면 b를 오른쪽으로
+				//return a - b; //오름차순 cf) b - a는 내림차순
+				//다나가 순 정렬
+				return a > b;
+			});
+ 

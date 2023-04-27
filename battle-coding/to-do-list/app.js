@@ -1,14 +1,11 @@
 const todoForm = document.querySelector(".todo-form");
 const todoInput = todoForm.querySelector("input");
 const todoList = document.querySelector(".todo-list");
-//빈배열 생성 -> 
 
-function saveTodo() {
-  localStorage.setItem(TODO_KEY, JSON.stringify(todos));
-  mode = 'insert';
-}
+
 //list생성
 function formSubmit(e) {
+  e.preventDefault();
   let inputVal = todoInput.value;
   let newLi = document.createElement("li");
   let liTextWrap = document.createElement("span");
@@ -55,6 +52,5 @@ function deleteList(e) {
   let targetParent = e.target.parentElement.parentElement;
   targetParent.remove();
 }
-
 
 todoForm.addEventListener("submit", formSubmit);
